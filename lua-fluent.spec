@@ -1,10 +1,14 @@
 %global forgeurl https://github.com/alerque/fluent-lua
 %global tag v%{version}
 
+%define lua_version %(lua -e 'print(_VERSION)' | cut -d ' ' -f 2)
+%define lua_pkgdir %{_datadir}/lua/%{lua_version}
+
 Name:      lua-fluent
 Version:   0.2.0
-Release:   6%{?dist}
+Release:   1
 Summary:   Lua implementation of Project Fluent
+Group:     Development/Other
 License:   MIT
 URL:       %{forgeurl}
 
@@ -67,23 +71,3 @@ print(bundle:format("hello", { name = "World" }))
 %doc CHANGELOG.md
 %doc README.md
 %{lua_pkgdir}/fluent/
-
-
-%changelog
-* Fri Jan 17 2025 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.0-6
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_42_Mass_Rebuild
-
-* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.0-5
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
-
-* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.0-4
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
-
-* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.0-3
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
-
-* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.0-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
-
-* Tue Nov 15 2022 Jonny Heggheim <hegjon@gmail.com> - 0.2.0-1
-- Initial package
